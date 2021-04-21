@@ -1,0 +1,25 @@
+.list {
+  .items {
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(180, 180, 180);
+
+    & > .link:nth-child(even) {
+      background-color: rgba(0, 150, 255, 0.1);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .item {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  input {
+    width: calc(50% - 20px);
+  }
+}
