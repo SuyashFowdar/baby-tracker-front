@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<a
+  className="measurement link bg-cover col cross-center main-center"
+  href="#/measure/undefined"
+  onClick={[Function]}
+>
+  <div
+    className="amount new"
+  >
+    Add new
+  </div>
+  <div
+    className="type"
+  />
+</a>
+`;
