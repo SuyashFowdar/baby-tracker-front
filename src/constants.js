@@ -1,4 +1,5 @@
 export default (method, url, body) => {
+  const host = process.env.NODE_ENV === 'production' ? 'https://suyash-baby-tracker.herokuapp.com/' : 'http://localhost:3000/';
   const obj = {
     method,
     headers: {
@@ -11,5 +12,5 @@ export default (method, url, body) => {
     obj.body = JSON.stringify(body);
   }
 
-  return new Request(`http://localhost:3000/${url}`, obj);
+  return new Request(`${host}${url}`, obj);
 };
