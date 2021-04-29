@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <a
-  className="measurement link bg-cover col cross-center main-center"
+  className="measure link bg-cover col cross-center main-center"
   href="#/measure/undefined"
   onClick={[Function]}
 >

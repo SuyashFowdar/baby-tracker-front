@@ -5,44 +5,46 @@ exports[`renders correctly 1`] = `
   <div
     className="login"
   >
-    <div
-      className="col cross-center main-center"
-    >
-      <form
-        className="col cross-center"
-        onSubmit={[Function]}
+    <div>
+      <div
+        className="col cross-center main-center"
       >
-        <h2>
-          Sign In
-        </h2>
-        <input
-          name="name"
-          placeholder="Username"
-          type="text"
-        />
-        <input
-          name="password"
-          placeholder="Password"
-          type="password"
-        />
-        <input
-          className="link w-90"
-          type="submit"
-          value="Sign In"
-        />
-        <button
-          className="link button w-90"
-          onClick={[Function]}
-          type="button"
+        <form
+          className="col cross-center"
+          onSubmit={[Function]}
         >
-          or create new account
-        </button>
-      </form>
-    </div>
-    <div
-      className="error row main-center cross-center"
-    >
-      
+          <h2>
+            Sign In
+          </h2>
+          <input
+            name="name"
+            placeholder="Username"
+            type="text"
+          />
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+          />
+          <input
+            className="link w-90"
+            type="submit"
+            value="Sign In"
+          />
+          <button
+            className="link button w-90"
+            onClick={[Function]}
+            type="button"
+          >
+            or create new account
+          </button>
+        </form>
+      </div>
+      <div
+        className="error row main-center cross-center"
+      >
+        
+      </div>
     </div>
   </div>
 </div>
