@@ -4,13 +4,13 @@ import HomeMeasurement from '../components/HomeMeasurement';
 import '../assets/css/Home.scss';
 
 const Home = () => {
-  const measurements = useSelector((state) => state.measurements);
+  const measures = useSelector((state) => state.measures);
 
   return (
     <>
       <div className="row wrap">
-        {measurements.map((measurement) => (
-          <HomeMeasurement key={measurement.id} measurement={measurement} />
+        {measures.map((measure) => (
+          <HomeMeasurement key={measure.id} measure={measure} />
         ))}
       </div>
     </>
