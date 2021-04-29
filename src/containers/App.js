@@ -12,45 +12,29 @@ import Home from './Home';
 import Measure from './Measure';
 import Admin from './Admin';
 import Login from './Login';
-import getRequest from '../constants';
+import query from '../query';
 import '../assets/css/App.scss';
-import { setMeasurements } from '../actions';
+import { setMeasures } from '../actions';
 
 const App = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
-  useEffect(() => {
-    if (localStorage.token) {
-      fetch(getRequest('GET', 'measurements/fetch'))
-        .then((response) => {
-          if (!response.ok) throw Error(response.statusText);
-          return response.json();
-        })
-        .then((response) => {
-          if (response.measures && response.measurements) {
-            for (let j = 0; j < response.measures.length; j += 1) {
-              const measure = response.measures[j];
-              measure.list = [];
-              for (let i = 0; i < response.measurements.length; i += 1) {
-                const measurement = response.measurements[i];
-                const date = new Date(measurement.created_at);
-                measurement.date = date.toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric' });
-                if (measurement.measure_id === measure.id) measure.list.push(measurement);
-              }
-            }
-          }
-          dispatch(setMeasurements(response.measures));
-        })
-        .catch(() => {
-          setErrorMessage("Couldn't fetch Measurements!");
-        });
-    }
-  });
-
   const logout = () => {
     localStorage.clear();
     window.location.reload();
   };
+
+  useEffect(() => {
+    if (localStorage.token) {
+      query('GET', 'measurements', null, (result) => {
+        if (result.measures && result.measurements) {
+          dispatch(setMeasures(result));
+        } else {
+          setErrorMessage(result.error);
+        }
+      });
+    }
+  });
 
   return (
     <div>
