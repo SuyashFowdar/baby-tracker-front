@@ -1,6 +1,6 @@
-export const setMeasurements = (measurements) => ({
-  type: 'SET_MEASUREMENTS',
-  measurements,
+export const setMeasures = (result) => ({
+  type: 'SET_MEASURES',
+  result,
 });
 
 export const addMeasure = (measure) => ({
@@ -8,8 +8,7 @@ export const addMeasure = (measure) => ({
   measure,
 });
 
-export const addMeasurement = (measureId, measurement) => ({
+export const addMeasurement = (measurement) => ({
   type: 'ADD_MEASUREMENT',
-  measureId,
   measurement,
 });
