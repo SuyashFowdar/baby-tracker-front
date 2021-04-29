@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import measurements from './measurements';
+import measures from './measures';
 
-export default combineReducers({ measurements });
+export default combineReducers({ measures });
