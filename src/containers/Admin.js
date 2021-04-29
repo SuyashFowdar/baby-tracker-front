@@ -9,7 +9,7 @@ const Admin = () => {
   const [redirect, setRedirect] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
-  const measures = useSelector((state) => state.measurements);
+  const measures = useSelector((state) => state.measures);
   const createMeasure = (e) => {
     e.preventDefault();
     const measure = {
