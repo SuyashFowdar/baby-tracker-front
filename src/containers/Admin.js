@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import getRequest from '../constants';
+import query from '../query';
 import List from '../components/List';
 import { addMeasure } from '../actions';
 
 const Admin = () => {
-  const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const measures = useSelector((state) => state.measurements);
@@ -16,38 +16,26 @@ const Admin = () => {
       item: e.target.item.value,
       unit: e.target.unit.value,
     };
-    fetch(getRequest('POST', 'measures/create', measure))
-      .then((response) => {
-        if (!response.ok) throw Error(response.statusText);
-        return response.json();
-      })
-      .then((response) => {
-        if (response.id) {
-          measure.id = response.id;
-          e.target.item.value = '';
-          e.target.unit.value = '';
-          dispatch(addMeasure(measure));
-        }
-      })
-      .catch(() => {
-        setErrorMessage("Couldn't add new Measure!");
-      });
+    query('POST', 'measures', measure, (result) => {
+      if (result.id) {
+        measure.id = result.id;
+        e.target.item.value = '';
+        e.target.unit.value = '';
+        dispatch(addMeasure(measure));
+      } else {
+        setErrorMessage(result.error);
+      }
+    });
   };
   useEffect(() => {
     if (localStorage.token) {
-      fetch(getRequest('GET', 'users/admin'))
-        .then((response) => {
-          if (!response.ok) throw Error(response.statusText);
-          return response.json();
-        })
-        .then((response) => {
-          if (!response.admin) {
-            setRedirect(true);
-          }
-        })
-        .catch(() => {
+      query('GET', 'admins', null, (result) => {
+        if (result.admin) {
+          setRedirect(false);
+        } else {
           setRedirect(true);
-        });
+        }
+      });
     }
   });
 
@@ -57,8 +45,14 @@ const Admin = () => {
         ? <Redirect to="/" />
         : (
           <div>
-            <List list={measures} itemKey="item" displayAttr={['item', 'unit']} toAddAttr={['item', 'unit']} addItem={createMeasure} />
-            <div className="error row main-center cross-center">{errorMessage}</div>
+            {redirect === null
+              ? <div />
+              : (
+                <div>
+                  <List list={measures} itemKey="item" displayAttr={['item', 'unit']} toAddAttr={['item', 'unit']} addItem={createMeasure} />
+                  <div className="error row main-center cross-center">{errorMessage}</div>
+                </div>
+              )}
           </div>
         )}
     </div>
