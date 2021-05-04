@@ -12,3 +12,8 @@ export const addMeasurement = (measurement) => ({
   type: 'ADD_MEASUREMENT',
   measurement,
 });
+
+export const setToken = (token) => ({
+  type: 'SET_TOKEN',
+  token,
+});

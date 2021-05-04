@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import query from '../query';
 import '../assets/css/Login.scss';
+import { setToken } from '../actions';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [signin, setSignin] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const performRequest = (e, url) => {
@@ -13,7 +16,7 @@ const Login = () => {
     }, (result) => {
       if (result.token) {
         localStorage.token = result.token;
-        window.location.reload();
+        dispatch(setToken(result.token));
       } else {
         setErrorMessage(result.error);
       }

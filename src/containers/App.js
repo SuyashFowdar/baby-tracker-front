@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faHome } from '@fortawesome/free-solid-svg-icons';
 import Home from './Home';
@@ -14,18 +14,20 @@ import Admin from './Admin';
 import Login from './Login';
 import query from '../query';
 import '../assets/css/App.scss';
-import { setMeasures } from '../actions';
+import { setMeasures, setToken } from '../actions';
 
 const App = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
+  const token = useSelector((state) => state.token);
   const logout = () => {
     localStorage.clear();
-    window.location.reload();
+    dispatch(setToken(''));
   };
 
   useEffect(() => {
     if (localStorage.token) {
+      if (!token) dispatch(setToken(localStorage.token));
       query('GET', 'measurements', null, (result) => {
         if (result.measures && result.measurements) {
           dispatch(setMeasures(result));
@@ -34,11 +36,11 @@ const App = () => {
         }
       });
     }
-  });
+  }, [token]);
 
   return (
     <div>
-      {localStorage.token
+      {(localStorage.token || token)
         ? (
           <Router>
             <div className="error row main-center cross-center">{errorMessage}</div>
