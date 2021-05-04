@@ -10,26 +10,25 @@ const castMeasurement = (measure, measurement) => {
 const measuresReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_MEASURES':
-      for (let j = 0; j < action.result.measures.length; j += 1) {
-        const measure = action.result.measures[j];
+      action.result.measures.forEach((m) => {
+        const measure = m;
         measure.measurements = [];
-        for (let i = 0; i < action.result.measurements.length; i += 1) {
-          const measurement = action.result.measurements[i];
+        action.result.measurements.forEach((measurement) => {
           if (measurement.measure_id === measure.id) {
             castMeasurement(measure, measurement);
           }
-        }
-      }
+        });
+      });
       return action.result.measures;
     case 'ADD_MEASURE':
       return [...state, action.measure];
     case 'ADD_MEASUREMENT': {
       const measures = _.cloneDeep(state);
-      for (let i = 0; i < measures.length; i += 1) {
-        if (measures[i].id === action.measurement.measure_id) {
-          castMeasurement(measures[i], action.measurement);
+      measures.forEach((measure) => {
+        if (measure.id === action.measurement.measure_id) {
+          castMeasurement(measure, action.measurement);
         }
-      }
+      });
       return measures;
     }
     default:
