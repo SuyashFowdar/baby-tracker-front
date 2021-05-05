@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/baby-tracker-front/static/css/main.9bcae820.chunk.css",
-    "main.js": "/baby-tracker-front/static/js/main.4e19a465.chunk.js",
-    "main.js.map": "/baby-tracker-front/static/js/main.4e19a465.chunk.js.map",
+    "main.js": "/baby-tracker-front/static/js/main.68166ee1.chunk.js",
+    "main.js.map": "/baby-tracker-front/static/js/main.68166ee1.chunk.js.map",
     "runtime-main.js": "/baby-tracker-front/static/js/runtime-main.4aeb9c82.js",
     "runtime-main.js.map": "/baby-tracker-front/static/js/runtime-main.4aeb9c82.js.map",
-    "static/js/2.b4972350.chunk.js": "/baby-tracker-front/static/js/2.b4972350.chunk.js",
-    "static/js/2.b4972350.chunk.js.map": "/baby-tracker-front/static/js/2.b4972350.chunk.js.map",
+    "static/js/2.c380b877.chunk.js": "/baby-tracker-front/static/js/2.c380b877.chunk.js",
+    "static/js/2.c380b877.chunk.js.map": "/baby-tracker-front/static/js/2.c380b877.chunk.js.map",
     "index.html": "/baby-tracker-front/index.html",
     "static/css/main.9bcae820.chunk.css.map": "/baby-tracker-front/static/css/main.9bcae820.chunk.css.map",
-    "static/js/2.b4972350.chunk.js.LICENSE.txt": "/baby-tracker-front/static/js/2.b4972350.chunk.js.LICENSE.txt"
+    "static/js/2.c380b877.chunk.js.LICENSE.txt": "/baby-tracker-front/static/js/2.c380b877.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4aeb9c82.js",
-    "static/js/2.b4972350.chunk.js",
+    "static/js/2.c380b877.chunk.js",
     "static/css/main.9bcae820.chunk.css",
-    "static/js/main.4e19a465.chunk.js"
+    "static/js/main.68166ee1.chunk.js"
   ]
 }
