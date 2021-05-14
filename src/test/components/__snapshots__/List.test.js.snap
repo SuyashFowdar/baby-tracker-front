@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="list"
+>
+  <div
+    className="items"
+  />
+  <form
+    className="row main-center wrap"
+    onSubmit={[Function]}
+  >
+    <input
+      className="link"
+      type="submit"
+      value="Add New"
+    />
+  </form>
+</div>
+`;

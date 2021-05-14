@@ -1,0 +1,9 @@
+.show-more {
+  width: 100%;
+  padding: 10px;
+  font-size: large;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
